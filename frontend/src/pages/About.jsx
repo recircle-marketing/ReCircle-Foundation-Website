@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Users, TrendingUp, DollarSign, Target, Lightbulb, MapPin, Handshake } from 'lucide-react';
 import CorePillarCard from '../components/CorePillarCard';
 import TeamCard from '../components/TeamCard';
 import ContactForm from '../components/ContactForm';
@@ -17,21 +16,6 @@ const About = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const visionIcons = {
-    'Formalises & protects safai saathis': Users,
-    'Drive behavioural change': TrendingUp,
-    'Direct capital': DollarSign
-  };
-
-  const pillarIcons = {
-    'INCLUSIVITY': Users,
-    'COLLABORATION': Handshake,
-    'TRANSPARENCY': Target,
-    'INNOVATION': Lightbulb,
-    'LOCAL-FIRST': MapPin,
-    'INSIGHT-DRIVEN': Target
-  };
 
   return (
     <div className="pt-20">
