@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Users, TrendingUp, DollarSign, Target, Lightbulb, MapPin } from 'lucide-react';
+import { Users, TrendingUp, DollarSign, Target, Lightbulb, MapPin, Handshake } from 'lucide-react';
 import CorePillarCard from '../components/CorePillarCard';
 import TeamCard from '../components/TeamCard';
 import ContactForm from '../components/ContactForm';
