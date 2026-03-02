@@ -92,11 +92,11 @@ const Home = () => {
             {focusAreasPreview.map((area) => (
               <div 
                 key={area.title}
-                className="flip-card-container h-64 perspective cursor-pointer"
+                className="group h-64 perspective-1000 cursor-pointer"
               >
-                <div className="flip-card-inner relative w-full h-full transition-transform duration-500 transform-style-3d hover:rotate-y-180">
+                <div className="relative w-full h-full transition-transform duration-700 transform-style-3d group-hover:[transform:rotateY(180deg)]">
                   {/* Front */}
-                  <div className="flip-card-face flip-card-front absolute w-full h-full backface-hidden bg-[#01298a] rounded-xl p-6 flex flex-col items-center justify-center text-white shadow-lg">
+                  <div className="absolute inset-0 w-full h-full backface-hidden bg-[#01298a] rounded-xl p-6 flex flex-col items-center justify-center text-white shadow-lg">
                     <img 
                       src={area.icon} 
                       alt={area.title}
@@ -106,7 +106,7 @@ const Home = () => {
                   </div>
 
                   {/* Back */}
-                  <div className="flip-card-face flip-card-back absolute w-full h-full backface-hidden bg-white rounded-xl p-6 flex items-center justify-center shadow-lg border-2 border-[#01298a] rotate-y-180">
+                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white rounded-xl p-6 flex items-center justify-center shadow-lg border-2 border-[#01298a] [transform:rotateY(180deg)]">
                     <p className="text-gray-700 text-center leading-relaxed">{area.description}</p>
                   </div>
                 </div>
