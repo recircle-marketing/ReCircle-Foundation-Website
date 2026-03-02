@@ -41,7 +41,7 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-10">
             {navigationLinks.map((link) => {
               const isActive = link.path === location.pathname;
               return link.external ? (
