@@ -21,13 +21,18 @@ const About = () => {
     <div className="pt-20">
       {/* Hero Section */}
       <section 
-        className="relative min-h-[60vh] flex items-center justify-center"
+        className="relative flex items-center justify-center"
         style={{
-          backgroundImage: `linear-gradient(to right, rgba(18, 152, 138, 0.85), rgba(18, 152, 138, 0.75)), url(${images.aboutMission})`,
+          backgroundImage: `url(${images.aboutMission})`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center'
+          backgroundPosition: 'center',
+          width: '100%',
+          height: '810px',
+          maxWidth: '1440px',
+          margin: '0 auto'
         }}
       >
+        <div className="absolute inset-0 bg-gradient-to-r from-[#01298a]/85 to-[#01298a]/75"></div>
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
             {aboutPageHero.title}

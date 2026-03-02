@@ -1,52 +1,57 @@
-import React, { useEffect } from 'react';
-import { Recycle, Users, Package, Heart, Briefcase, Shield, ArrowRight } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
 import ContactForm from '../components/ContactForm';
 import { focusAreasIntro, focusAreasDetailed, contactCTA, images } from '../data/mock';
 
 const FocusAreas = () => {
+  const contactFormRef = useRef(null);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const focusAreaIcons = {
-    'WASTE DIVERSION': Recycle,
-    'FORMALISATION OF SAFAI SAATHIS': Users,
-    'TURNING WASTE INTO RESOURCES': Package,
-    'DRIVING BEHAVIORAL CHANGE': Heart,
-    'SECURING LIVELIHOOD OPPORTUNITIES': Briefcase,
-    'HEALTH & SAFETY ACCESS': Shield
+  const scrollToContactForm = () => {
+    contactFormRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const focusAreaImages = {
     'WASTE DIVERSION': images.hero,
-    'FORMALISATION OF SAFAI SAATHIS': images.hero,
+    'FORMALISATION OF SAFAI SAATHIS': images.formalisation,
     'TURNING WASTE INTO RESOURCES': images.wasteResources,
-    'DRIVING BEHAVIORAL CHANGE': images.communityEducation,
-    'SECURING LIVELIHOOD OPPORTUNITIES': images.hero,
-    'HEALTH & SAFETY ACCESS': images.hero
+    'DRIVING BEHAVIORAL CHANGE': images.behavioralChange,
+    'SECURING LIVELIHOOD OPPORTUNITIES': images.livelihood,
+    'HEALTH & SAFETY ACCESS': images.healthSafety
   };
 
   return (
     <div className="pt-20">
       {/* Hero/Intro Section */}
-      <section className="py-20 bg-gradient-to-br from-[#01298a] to-brand-green text-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
-            {focusAreasIntro.title}
-          </h1>
-          <p className="text-xl mb-4 text-white/90">
-            {focusAreasIntro.description}
-          </p>
-          <p className="text-lg font-semibold text-brand-yellow">
-            {focusAreasIntro.conclusion}
-          </p>
+      <section 
+        className="relative py-32 bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${images.focusAreasHero})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      >
+        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl text-left">
+            <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-tight text-white">
+              {focusAreasIntro.title}
+            </h1>
+            <p className="text-xl mb-4 text-white/90">
+              {focusAreasIntro.description}
+            </p>
+            <p className="text-lg font-semibold text-brand-yellow">
+              {focusAreasIntro.conclusion}
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Focus Areas Detail */}
       <section className="py-12">
         {focusAreasDetailed.map((area, index) => {
-          const Icon = focusAreaIcons[area.title];
           const bgColor = index % 2 === 0 ? 'bg-white' : 'bg-brand-offwhite';
           const imageUrl = focusAreaImages[area.title];
           
@@ -58,22 +63,19 @@ const FocusAreas = () => {
                 }`}>
                   {/* Content */}
                   <div className={index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}>
-                    <div className="flex items-center space-x-4 mb-6">
-                      <div className="bg-[#01298a] text-white rounded-lg p-4">
-                        <Icon size={32} />
-                      </div>
-                      <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-                        {area.title}
-                      </h2>
-                    </div>
+                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">
+                      {area.title}
+                    </h2>
                     
                     <div className="space-y-4 text-gray-700 leading-relaxed whitespace-pre-line">
                       {area.content}
                     </div>
                     
-                    <button className="mt-8 bg-cta-blue text-cta-text px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition-all duration-300 inline-flex items-center space-x-2 shadow-md hover:shadow-lg">
-                      <span>{area.cta}</span>
-                      <ArrowRight size={18} />
+                    <button 
+                      onClick={scrollToContactForm}
+                      className="mt-8 bg-cta-blue text-cta-text px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition-all duration-300 shadow-md hover:shadow-lg"
+                    >
+                      {area.cta.replace('.', '').replace('!', '')}
                     </button>
                   </div>
 
@@ -96,7 +98,7 @@ const FocusAreas = () => {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-20 bg-brand-offwhite">
+      <section ref={contactFormRef} className="py-20 bg-brand-offwhite scroll-mt-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center">
             {contactCTA.title}

@@ -265,9 +265,14 @@ export const getInvolvedHero = {
 };
 
 export const images = {
-  hero: "https://recircle.in/wp-content/uploads/2025/11/image-3.jpeg",
-  aboutMission: "https://images.unsplash.com/photo-1719825523711-eda3221c111c",
-  wasteResources: "https://images.unsplash.com/photo-1653406384710-08688ec6b979",
+  hero: "https://recircle.in/wp-content/uploads/2026/03/About-page-Main-Banner-ReCircle-Foundation-was-built-for-the-people-behind-the-system.png",
+  aboutMission: "https://recircle.in/wp-content/uploads/2026/03/Banner.png",
+  focusAreasHero: "https://recircle.in/wp-content/uploads/2026/03/If-circularity-can-give-materials-a-second-life-1.png",
+  wasteResources: "https://recircle.in/wp-content/uploads/2026/03/Waste-to-resource2.png",
   communityEducation: "https://images.unsplash.com/photo-1768595701593-c84fd8143aea",
+  formalisation: "https://recircle.in/wp-content/uploads/2026/03/FORMALISATION-OF-SAFAI-SAATHIS-1.png",
+  behavioralChange: "https://recircle.in/wp-content/uploads/2026/03/DRIVING-BEHAVIORAL-CHANGE.png",
+  livelihood: "https://recircle.in/wp-content/uploads/2026/03/SECURING-LIVELIHOOD-OPPORTUNITIES.png",
+  healthSafety: "https://recircle.in/wp-content/uploads/2026/03/HEALTH-SAFETY-ACCESS-1.png",
   logo: "https://customer-assets.emergentagent.com/job_764812a6-b2f9-4127-b6ce-78696f03bdc7/artifacts/ay48k5wb_ReCircle-Foundation-Logo.png"
 };
