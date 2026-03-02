@@ -12,14 +12,14 @@ const GetInvolved = () => {
     <div className="pt-20">
       {/* Hero Section */}
       <section 
-        className="relative py-40 bg-cover bg-center min-h-[70vh]"
+        className="relative py-48 bg-cover bg-center min-h-[85vh]"
         style={{
           backgroundImage: `url(${images.getInvolvedHero})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-[#01298a]/85 to-[#01298a]/75"></div>
+        <div className="absolute inset-0 bg-black/40"></div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
           <div className="max-w-3xl text-left">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">

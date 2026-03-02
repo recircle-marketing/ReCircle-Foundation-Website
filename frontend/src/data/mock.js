@@ -269,6 +269,7 @@ export const images = {
   aboutMission: "https://recircle.in/wp-content/uploads/2026/03/New-Banner-1.png",
   getInvolvedHero: "https://recircle.in/wp-content/uploads/2026/03/Safai-Saathi.png",
   focusAreasHero: "https://recircle.in/wp-content/uploads/2026/03/If-circularity-can-give-materials-a-second-life-1.png",
+  wasteDiversion: "https://recircle.in/wp-content/uploads/2025/11/image-2.jpeg",
   wasteResources: "https://recircle.in/wp-content/uploads/2026/03/Waste-to-resource2.png",
   communityEducation: "https://images.unsplash.com/photo-1768595701593-c84fd8143aea",
   formalisation: "https://recircle.in/wp-content/uploads/2026/03/FORMALISATION-OF-SAFAI-SAATHIS-1.png",

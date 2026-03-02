@@ -14,7 +14,7 @@ const FocusAreas = () => {
   };
 
   const focusAreaImages = {
-    'WASTE DIVERSION': images.hero,
+    'WASTE DIVERSION': images.wasteDiversion,
     'FORMALISATION OF SAFAI SAATHIS': images.formalisation,
     'TURNING WASTE INTO RESOURCES': images.wasteResources,
     'DRIVING BEHAVIORAL CHANGE': images.behavioralChange,
@@ -26,7 +26,7 @@ const FocusAreas = () => {
     <div className="pt-20">
       {/* Hero/Intro Section */}
       <section 
-        className="relative py-40 bg-cover bg-center min-h-[70vh]"
+        className="relative py-48 bg-cover bg-center min-h-[85vh]"
         style={{
           backgroundImage: `url(${images.focusAreasHero})`,
           backgroundSize: 'cover',
