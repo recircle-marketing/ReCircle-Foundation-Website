@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Users, TrendingUp, DollarSign, Target, Lightbulb, MapPin } from 'lucide-react';
-import FlipCard from '../components/FlipCard';
+import CorePillarCard from '../components/CorePillarCard';
 import TeamCard from '../components/TeamCard';
 import ContactForm from '../components/ContactForm';
 import { 
@@ -26,7 +26,7 @@ const About = () => {
 
   const pillarIcons = {
     'INCLUSIVITY': Users,
-    'COLLABORATION': Lightbulb,
+    'COLLABORATION': Handshake,
     'TRANSPARENCY': Target,
     'INNOVATION': Lightbulb,
     'LOCAL-FIRST': MapPin,
@@ -53,10 +53,7 @@ const About = () => {
 
       {/* About Content */}
       <section className="py-20 bg-brand-offwhite">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
-            About the Foundation
-          </h2>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
             <p>{aboutPageContent.founded}</p>
             <p>{aboutPageContent.story}</p>
@@ -114,7 +111,7 @@ const About = () => {
             {corePillars.map((pillar) => {
               const Icon = pillarIcons[pillar.title];
               return (
-                <FlipCard 
+                <CorePillarCard
                   key={pillar.title}
                   title={pillar.title}
                   description={pillar.description}
