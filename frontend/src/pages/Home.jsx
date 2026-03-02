@@ -7,16 +7,10 @@ import {
   Heart, 
   Briefcase, 
   Shield,
-  ArrowRight,
-  Leaf,
-  Building2,
-  TreeDeciduous,
-  ShoppingBag,
-  Globe,
-  Droplets,
-  Handshake
+  ArrowRight
 } from 'lucide-react';
 import FlipCard from '../components/FlipCard';
+import SDGFlipCard from '../components/SDGFlipCard';
 import ContactForm from '../components/ContactForm';
 import { 
   heroContent, 
@@ -42,16 +36,6 @@ const Home = () => {
     'HEALTH & SAFETY ACCESS': Shield
   };
 
-  const sdgIcons = {
-    '8': Briefcase,
-    '9': Building2,
-    '11': TreeDeciduous,
-    '12': ShoppingBag,
-    '13': Leaf,
-    '14': Droplets,
-    '17': Handshake
-  };
-
   return (
     <div className="pt-20">
       {/* Hero Section */}
@@ -59,19 +43,19 @@ const Home = () => {
         <div 
           className="absolute inset-0 z-0"
           style={{
-            backgroundImage: `linear-gradient(to right, rgba(18, 152, 138, 0.85), rgba(18, 152, 138, 0.75)), url(${images.hero})`,
+            backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5)), url(${images.hero})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center'
           }}
         ></div>
         
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-8 animate-fade-in">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-8 animate-fade-in whitespace-pre-line">
             {heroContent.title}
           </h1>
           <Link to="/get-involved">
-            <button className="bg-white text-brand-blue px-8 py-4 rounded-lg text-lg font-semibold hover:bg-brand-offwhite transition-all duration-300 hover:scale-105 shadow-xl">
-              Partner With Us
+            <button className="bg-cta-blue text-cta-text px-6 py-3 rounded-lg text-base font-semibold hover:opacity-90 transition-all duration-300 hover:scale-105 shadow-xl">
+              Partner for Impact.
             </button>
           </Link>
         </div>
@@ -79,15 +63,20 @@ const Home = () => {
 
       {/* About the Foundation */}
       <section className="py-20 bg-brand-offwhite">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
-            About the Foundation
-          </h2>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
             <p>{aboutFoundation.intro}</p>
             <p>{aboutFoundation.mission}</p>
             <p>{aboutFoundation.approach}</p>
             <p className="font-semibold text-brand-blue">{aboutFoundation.goal}</p>
+          </div>
+          <div className="mt-8">
+            <Link to="/about">
+              <button className="bg-cta-blue text-cta-text px-8 py-4 rounded-lg text-lg font-semibold hover:opacity-90 transition-all duration-300 inline-flex items-center space-x-2 shadow-lg hover:shadow-xl">
+                <span>Know More</span>
+                <ArrowRight size={20} />
+              </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -102,30 +91,10 @@ const Home = () => {
             Global Sustainable Development Goals
           </h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {sdgCommitments.map((sdg) => {
-              const Icon = sdgIcons[sdg.number];
-              return (
-                <div 
-                  key={sdg.number}
-                  className="bg-white border-2 border-gray-100 rounded-xl p-6 hover:shadow-xl transition-shadow duration-300"
-                >
-                  <div className="flex items-start space-x-4">
-                    <div className="bg-brand-blue text-white rounded-lg p-3 flex-shrink-0">
-                      <Icon size={24} />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-gray-900 mb-2">
-                        SDG {sdg.number} | {sdg.title}
-                      </h4>
-                      <p className="text-gray-600 text-sm leading-relaxed">
-                        {sdg.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            {sdgCommitments.map((sdg) => (
+              <SDGFlipCard key={sdg.number} sdg={sdg} />
+            ))}
           </div>
         </div>
       </section>
@@ -141,19 +110,30 @@ const Home = () => {
             {focusAreasPreview.map((area) => {
               const Icon = focusAreaIcons[area.title];
               return (
-                <FlipCard 
+                <div 
                   key={area.title}
-                  title={area.title}
-                  description={area.description}
-                  icon={Icon}
-                />
+                  className="flip-card-container h-64 perspective cursor-pointer"
+                >
+                  <div className="flip-card-inner relative w-full h-full transition-transform duration-500 transform-style-3d hover:rotate-y-180">
+                    {/* Front */}
+                    <div className="flip-card-face flip-card-front absolute w-full h-full backface-hidden bg-[#01298a] rounded-xl p-6 flex flex-col items-center justify-center text-white shadow-lg">
+                      <Icon size={48} className="mb-4 text-[#deed4b]" />
+                      <h3 className="text-xl font-bold text-center">{area.title}</h3>
+                    </div>
+
+                    {/* Back */}
+                    <div className="flip-card-face flip-card-back absolute w-full h-full backface-hidden bg-white rounded-xl p-6 flex items-center justify-center shadow-lg border-2 border-[#01298a] rotate-y-180">
+                      <p className="text-gray-700 text-center leading-relaxed">{area.description}</p>
+                    </div>
+                  </div>
+                </div>
               );
             })}
           </div>
 
           <div className="text-center mt-12">
             <Link to="/focus-areas">
-              <button className="bg-brand-blue text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-brand-blue/90 transition-all duration-300 inline-flex items-center space-x-2 shadow-lg hover:shadow-xl">
+              <button className="bg-cta-blue text-cta-text px-8 py-4 rounded-lg text-lg font-semibold hover:opacity-90 transition-all duration-300 inline-flex items-center space-x-2 shadow-lg hover:shadow-xl">
                 <span>Learn More About Our Work</span>
                 <ArrowRight size={20} />
               </button>
