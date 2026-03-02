@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Mail, Phone, Building } from 'lucide-react';
 import ContactForm from '../components/ContactForm';
-import { getInvolvedHero } from '../data/mock';
+import { getInvolvedHero, images } from '../data/mock';
 
 const GetInvolved = () => {
   useEffect(() => {
@@ -11,17 +11,27 @@ const GetInvolved = () => {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-[#01298a] via-brand-green to-[#01298a] text-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            {getInvolvedHero.title}
-          </h1>
-          <p className="text-xl mb-6 text-white/90 max-w-3xl mx-auto">
-            {getInvolvedHero.description}
-          </p>
-          <p className="text-lg font-semibold text-brand-yellow">
-            {getInvolvedHero.tagline}
-          </p>
+      <section 
+        className="relative py-40 bg-cover bg-center min-h-[70vh]"
+        style={{
+          backgroundImage: `url(${images.getInvolvedHero})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-[#01298a]/85 to-[#01298a]/75"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+          <div className="max-w-3xl text-left">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+              {getInvolvedHero.title}
+            </h1>
+            <p className="text-xl mb-6 text-white/90">
+              {getInvolvedHero.description}
+            </p>
+            <p className="text-lg font-semibold text-brand-yellow">
+              {getInvolvedHero.tagline}
+            </p>
+          </div>
         </div>
       </section>
 

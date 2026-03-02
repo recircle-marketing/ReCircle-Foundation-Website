@@ -26,7 +26,7 @@ const FocusAreas = () => {
     <div className="pt-20">
       {/* Hero/Intro Section */}
       <section 
-        className="relative py-32 bg-cover bg-center"
+        className="relative py-40 bg-cover bg-center min-h-[70vh]"
         style={{
           backgroundImage: `url(${images.focusAreasHero})`,
           backgroundSize: 'cover',
@@ -34,7 +34,7 @@ const FocusAreas = () => {
         }}
       >
         <div className="absolute inset-0 bg-black/40"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
           <div className="max-w-2xl text-left">
             <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-tight text-white">
               {focusAreasIntro.title}

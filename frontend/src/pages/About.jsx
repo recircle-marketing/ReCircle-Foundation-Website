@@ -21,22 +21,20 @@ const About = () => {
     <div className="pt-20">
       {/* Hero Section */}
       <section 
-        className="relative flex items-center justify-center"
+        className="relative py-40 bg-cover bg-center min-h-[70vh]"
         style={{
           backgroundImage: `url(${images.aboutMission})`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          width: '100%',
-          height: '810px',
-          maxWidth: '1440px',
-          margin: '0 auto'
+          backgroundPosition: 'center'
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-[#01298a]/85 to-[#01298a]/75"></div>
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-            {aboutPageHero.title}
-          </h1>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+          <div className="max-w-3xl text-left">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+              {aboutPageHero.title}
+            </h1>
+          </div>
         </div>
       </section>
 

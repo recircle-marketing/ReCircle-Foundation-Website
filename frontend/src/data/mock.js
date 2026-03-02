@@ -266,7 +266,8 @@ export const getInvolvedHero = {
 
 export const images = {
   hero: "https://recircle.in/wp-content/uploads/2026/03/About-page-Main-Banner-ReCircle-Foundation-was-built-for-the-people-behind-the-system.png",
-  aboutMission: "https://recircle.in/wp-content/uploads/2026/03/Banner.png",
+  aboutMission: "https://recircle.in/wp-content/uploads/2026/03/New-Banner-1.png",
+  getInvolvedHero: "https://recircle.in/wp-content/uploads/2026/03/Safai-Saathi.png",
   focusAreasHero: "https://recircle.in/wp-content/uploads/2026/03/If-circularity-can-give-materials-a-second-life-1.png",
   wasteResources: "https://recircle.in/wp-content/uploads/2026/03/Waste-to-resource2.png",
   communityEducation: "https://images.unsplash.com/photo-1768595701593-c84fd8143aea",
