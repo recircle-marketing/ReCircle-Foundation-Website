@@ -37,7 +37,7 @@ const Home = () => {
           </h1>
           <Link to="/get-involved">
             <button className="bg-cta-blue text-cta-text px-6 py-3 rounded-lg text-base font-semibold hover:opacity-90 transition-all duration-300 hover:scale-105 shadow-xl">
-              Partner for Impact.
+              Partner for Impact
             </button>
           </Link>
         </div>
@@ -126,12 +126,25 @@ const Home = () => {
       {/* Impact Stats */}
       <section className="py-20 bg-brand-blue text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
             A Decade of Impact
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mt-12">
-            {impactStats.map((stat, index) => (
+          {/* Featured Stat - Full Width */}
+          <div className="mb-8">
+            <div className="text-center p-8 bg-white/10 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-all duration-300">
+              <div className="text-5xl md:text-6xl font-bold text-brand-yellow mb-4">
+                {impactStats[0].number}
+              </div>
+              <p className="text-white text-lg md:text-xl leading-relaxed">
+                {impactStats[0].description}
+              </p>
+            </div>
+          </div>
+
+          {/* Other Stats */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {impactStats.slice(1).map((stat, index) => (
               <div 
                 key={index}
                 className="text-center p-6 bg-white/10 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-all duration-300"
