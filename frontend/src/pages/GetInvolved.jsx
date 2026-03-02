@@ -11,7 +11,7 @@ const GetInvolved = () => {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-brand-blue via-brand-green to-brand-blue text-white">
+      <section className="py-20 bg-gradient-to-br from-[#01298a] via-brand-green to-[#01298a] text-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
             {getInvolvedHero.title}
@@ -29,24 +29,24 @@ const GetInvolved = () => {
       <section className="py-16 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div className="bg-brand-offwhite rounded-xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-brand-blue/20">
-              <div className="inline-block bg-brand-blue text-white rounded-full p-5 mb-4">
+            <div className="bg-brand-offwhite rounded-xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-[#01298a]/20">
+              <div className="inline-block bg-[#01298a] text-white rounded-full p-5 mb-4">
                 <Mail size={32} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Email Us</h3>
               <p className="text-gray-600">info@recirclefoundation.org</p>
             </div>
 
-            <div className="bg-brand-offwhite rounded-xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-brand-blue/20">
-              <div className="inline-block bg-brand-blue text-white rounded-full p-5 mb-4">
+            <div className="bg-brand-offwhite rounded-xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-[#01298a]/20">
+              <div className="inline-block bg-[#01298a] text-white rounded-full p-5 mb-4">
                 <Phone size={32} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Call Us</h3>
               <p className="text-gray-600">+91 (0) 000 000 0000</p>
             </div>
 
-            <div className="bg-brand-offwhite rounded-xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-brand-blue/20">
-              <div className="inline-block bg-brand-blue text-white rounded-full p-5 mb-4">
+            <div className="bg-brand-offwhite rounded-xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-[#01298a]/20">
+              <div className="inline-block bg-[#01298a] text-white rounded-full p-5 mb-4">
                 <Building size={32} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Visit Us</h3>
