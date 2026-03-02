@@ -250,7 +250,7 @@ export const getInvolvedHero = {
 };
 
 export const images = {
-  hero: "https://images.unsplash.com/photo-1764116858740-832d0f86b86b",
+  hero: "https://recircle.in/wp-content/uploads/2025/11/image-3.jpeg",
   aboutMission: "https://images.unsplash.com/photo-1719825523711-eda3221c111c",
   wasteResources: "https://images.unsplash.com/photo-1653406384710-08688ec6b979",
   communityEducation: "https://images.unsplash.com/photo-1768595701593-c84fd8143aea",
