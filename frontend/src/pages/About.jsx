@@ -58,25 +58,26 @@ const About = () => {
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {visionItems.map((item) => {
-              const Icon = visionIcons[item.title];
-              return (
-                <div 
-                  key={item.title}
-                  className="bg-brand-offwhite border-2 border-brand-blue/20 rounded-xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:scale-105"
-                >
-                  <div className="inline-block bg-brand-blue text-white rounded-full p-4 mb-4">
-                    <Icon size={32} />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {item.description}
-                  </p>
+            {visionItems.map((item) => (
+              <div 
+                key={item.title}
+                className="bg-brand-offwhite border-2 border-brand-blue/20 rounded-xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:scale-105"
+              >
+                <div className="inline-block mb-4">
+                  <img 
+                    src={item.icon} 
+                    alt={item.title}
+                    className="w-16 h-16 object-contain"
+                  />
                 </div>
-              );
-            })}
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
