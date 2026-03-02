@@ -177,22 +177,22 @@ export const teamMembers = [
   {
     name: "Rahul Nainani",
     designation: "CEO & Co-founder",
-    image: "https://via.placeholder.com/300x300/1298a/ffffff?text=RN"
+    image: "https://recircle.in/wp-content/uploads/2025/06/Rahul-Nainani.jpeg"
   },
   {
     name: "Gurashish Sahni",
     designation: "COO & Co-founder",
-    image: "https://via.placeholder.com/300x300/1298a/ffffff?text=GS"
+    image: "https://recircle.in/wp-content/uploads/2024/10/2_Gurashish.png"
   },
   {
-    name: "Rohit",
+    name: "Rohit Lalwani",
     designation: "Mentor",
-    image: "https://via.placeholder.com/300x300/1298a/ffffff?text=R"
+    image: "https://recircle.in/wp-content/uploads/2024/08/Rohit-Lalwani.jpg"
   },
   {
     name: "Shraddha Shelatkar",
     designation: "Grant Management Executive",
-    image: "https://via.placeholder.com/300x300/1298a/ffffff?text=SS"
+    image: "https://recircle.in/wp-content/uploads/2024/10/30_Shraddha-Shelatkar.png"
   }
 ];
 
