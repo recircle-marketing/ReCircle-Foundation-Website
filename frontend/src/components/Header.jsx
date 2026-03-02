@@ -29,10 +29,10 @@ const Header = () => {
         isScrolled ? 'bg-white shadow-md' : 'bg-white/95 backdrop-blur-sm'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex items-center flex-shrink-0">
             <img 
               src={images.logo} 
               alt="ReCircle Foundation" 
@@ -41,14 +41,14 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-10">
+          <nav className="hidden md:flex items-center gap-12">
             {navigationLinks.map((link) => {
               const isActive = link.path === location.pathname;
               return link.external ? (
                 <button
                   key={link.name}
                   onClick={() => handleNavClick(link)}
-                  className="text-gray-700 hover:text-brand-blue font-medium transition-colors duration-200 relative group"
+                  className="text-gray-700 hover:text-brand-blue font-medium transition-colors duration-200 relative group whitespace-nowrap"
                 >
                   {link.name}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-blue transition-all duration-200 group-hover:w-full"></span>
@@ -57,7 +57,7 @@ const Header = () => {
                 <Link
                   key={link.name}
                   to={link.path}
-                  className={`font-medium transition-colors duration-200 relative group ${
+                  className={`font-medium transition-colors duration-200 relative group whitespace-nowrap ${
                     isActive ? 'text-brand-blue' : 'text-gray-700 hover:text-brand-blue'
                   }`}
                 >
