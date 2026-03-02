@@ -54,9 +54,8 @@ const Home = () => {
           </div>
           <div className="mt-8">
             <Link to="/about">
-              <button className="bg-cta-blue text-cta-text px-8 py-4 rounded-lg text-lg font-semibold hover:opacity-90 transition-all duration-300 inline-flex items-center space-x-2 shadow-lg hover:shadow-xl">
-                <span>Know More</span>
-                <ArrowRight size={20} />
+              <button className="bg-cta-blue text-cta-text px-8 py-4 rounded-lg text-lg font-semibold hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl">
+                Know More
               </button>
             </Link>
           </div>
@@ -116,9 +115,8 @@ const Home = () => {
 
           <div className="text-center mt-12">
             <Link to="/focus-areas">
-              <button className="bg-cta-blue text-cta-text px-8 py-4 rounded-lg text-lg font-semibold hover:opacity-90 transition-all duration-300 inline-flex items-center space-x-2 shadow-lg hover:shadow-xl">
-                <span>Learn More About Our Work</span>
-                <ArrowRight size={20} />
+              <button className="bg-cta-blue text-cta-text px-8 py-4 rounded-lg text-lg font-semibold hover:opacity-90 transition-all duration-300 shadow-lg hover:shadow-xl">
+                Learn More About Our Work
               </button>
             </Link>
           </div>

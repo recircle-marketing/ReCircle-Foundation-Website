@@ -19,12 +19,12 @@ const SDGFlipCard = ({ sdg }) => {
           isFlipped ? 'rotate-y-180' : ''
         }`}
       >
-        {/* Front - SDG Icon */}
-        <div className="flip-card-face flip-card-front absolute w-full h-full backface-hidden bg-white rounded-xl flex items-center justify-center shadow-lg border-2 border-gray-100">
+        {/* Front - SDG Icon edge-to-edge */}
+        <div className="flip-card-face flip-card-front absolute w-full h-full backface-hidden rounded-xl overflow-hidden shadow-lg">
           <img 
             src={sdg.icon} 
             alt={`SDG ${sdg.number}`}
-            className="w-full h-full object-contain p-4"
+            className="w-full h-full object-cover"
           />
         </div>
 
