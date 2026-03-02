@@ -121,13 +121,13 @@ export const impactStats = [
 ];
 
 export const contactCTA = {
-  title: "Take the first step towards real impact",
+  title: "Take the First Step Towards Real Impact",
   description: "Partner with ReCircle Foundation to build systems that protect livelihoods and sustain themselves."
 };
 
 // ABOUT PAGE CONTENT
 export const aboutPageHero = {
-  title: "ReCircle Foundation was built for the people behind the system."
+  title: "ReCircle Foundation\nwas Built for the People\nBehind the System"
 };
 
 export const aboutPageContent = {
@@ -139,19 +139,19 @@ export const aboutPageContent = {
 
 export const visionItems = [
   {
-    title: "Formalises & protects safai saathis",
+    title: "Formalises & Protects Safai Saathis",
     description: "ensuring circularity creates stable, dignified livelihoods.",
-    icon: "https://recircle.in/wp-content/uploads/2026/03/Our-Vision-Formalises-protects-people-icon.png"
+    icon: "https://recircle.in/wp-content/uploads/2026/03/Our-Vision-Formalises-protects-people-icon-1.png"
   },
   {
-    title: "Drives behavioral change",
+    title: "Drives Behavioral Change",
     description: "at the grassroots level so more material stays in circulation",
-    icon: "https://recircle.in/wp-content/uploads/2026/03/Our-Vision-Drive-behavioural-change-icon.png"
+    icon: "https://recircle.in/wp-content/uploads/2026/03/Our-Vision-Drive-behavioural-change-icon-1.png"
   },
   {
-    title: "Directs capital",
+    title: "Directs Capital",
     description: "to strengthen recovery systems and allow them to sustain themselves.",
-    icon: "https://recircle.in/wp-content/uploads/2026/03/Our-Vision-Direct-capital-icon.png"
+    icon: "https://recircle.in/wp-content/uploads/2026/03/Our-Vision-Direct-capital-icon-1.png"
   }
 ];
 
