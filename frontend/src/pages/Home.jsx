@@ -89,28 +89,29 @@ const Home = () => {
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {focusAreasPreview.map((area) => {
-              const Icon = focusAreaIcons[area.title];
-              return (
-                <div 
-                  key={area.title}
-                  className="flip-card-container h-64 perspective cursor-pointer"
-                >
-                  <div className="flip-card-inner relative w-full h-full transition-transform duration-500 transform-style-3d hover:rotate-y-180">
-                    {/* Front */}
-                    <div className="flip-card-face flip-card-front absolute w-full h-full backface-hidden bg-[#01298a] rounded-xl p-6 flex flex-col items-center justify-center text-white shadow-lg">
-                      <Icon size={48} className="mb-4 text-[#deed4b]" />
-                      <h3 className="text-xl font-bold text-center">{area.title}</h3>
-                    </div>
+            {focusAreasPreview.map((area) => (
+              <div 
+                key={area.title}
+                className="flip-card-container h-64 perspective cursor-pointer"
+              >
+                <div className="flip-card-inner relative w-full h-full transition-transform duration-500 transform-style-3d hover:rotate-y-180">
+                  {/* Front */}
+                  <div className="flip-card-face flip-card-front absolute w-full h-full backface-hidden bg-[#01298a] rounded-xl p-6 flex flex-col items-center justify-center text-white shadow-lg">
+                    <img 
+                      src={area.icon} 
+                      alt={area.title}
+                      className="w-16 h-16 mb-4 object-contain"
+                    />
+                    <h3 className="text-xl font-bold text-center">{area.title}</h3>
+                  </div>
 
-                    {/* Back */}
-                    <div className="flip-card-face flip-card-back absolute w-full h-full backface-hidden bg-white rounded-xl p-6 flex items-center justify-center shadow-lg border-2 border-[#01298a] rotate-y-180">
-                      <p className="text-gray-700 text-center leading-relaxed">{area.description}</p>
-                    </div>
+                  {/* Back */}
+                  <div className="flip-card-face flip-card-back absolute w-full h-full backface-hidden bg-white rounded-xl p-6 flex items-center justify-center shadow-lg border-2 border-[#01298a] rotate-y-180">
+                    <p className="text-gray-700 text-center leading-relaxed">{area.description}</p>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
 
           <div className="text-center mt-12">
