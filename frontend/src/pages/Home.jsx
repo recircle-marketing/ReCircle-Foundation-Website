@@ -1,15 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { 
-  Recycle, 
-  Users, 
-  Package, 
-  Heart, 
-  Briefcase, 
-  Shield,
-  ArrowRight
-} from 'lucide-react';
-import FlipCard from '../components/FlipCard';
+import { ArrowRight } from 'lucide-react';
 import SDGFlipCard from '../components/SDGFlipCard';
 import ContactForm from '../components/ContactForm';
 import { 
@@ -26,15 +17,6 @@ const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const focusAreaIcons = {
-    'WASTE DIVERSION': Recycle,
-    'FORMALISATION OF SAFAI SAATHIS': Users,
-    'WASTE INTO RESOURCES': Package,
-    'BEHAVIOURAL CHANGE': Heart,
-    'LIVELIHOOD OPPORTUNITIES': Briefcase,
-    'HEALTH & SAFETY ACCESS': Shield
-  };
 
   return (
     <div className="pt-20">
