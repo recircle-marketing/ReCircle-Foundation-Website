@@ -9,7 +9,7 @@ export const navigationLinks = [
 ];
 
 export const heroContent = {
-  title: "Building the Social Infrastructure Behind India's Circular Future"
+  title: "Building the Social Infrastructure\nBehind India's Circular Future"
 };
 
 export const aboutFoundation = {
@@ -23,37 +23,44 @@ export const sdgCommitments = [
   {
     number: "8",
     title: "Decent Work & Economic Growth",
-    description: "Through our Safai Saathi programs, we formalise livelihoods, strengthen incomes, and enable safer, more dignified work opportunities."
+    description: "Through our Safai Saathi programs, we formalise livelihoods, strengthen incomes, and enable safer, more dignified work opportunities.",
+    icon: "https://www.logos.aiesec.org/_next/image?url=https%3A%2F%2Faiesec-logos.s3.eu-west-1.amazonaws.com%2FTGG_Icon_Color_08.png&w=640&q=75"
   },
   {
     number: "9",
     title: "Industry, Innovation & Infrastructure",
-    description: "We design transparent waste systems and continuously innovate to keep materials in circulation while integrating informal workers into value chains."
+    description: "We design transparent waste systems and continuously innovate to keep materials in circulation while integrating informal workers into value chains.",
+    icon: "https://www.logos.aiesec.org/_next/image?url=https%3A%2F%2Faiesec-logos.s3.eu-west-1.amazonaws.com%2FTGG_Icon_Color_09.png&w=640&q=75"
   },
   {
     number: "11",
     title: "Sustainable Cities & Communities",
-    description: "Through on-ground citizen awareness campaigns, we drive behaviour change that makes circular living a natural part of everyday urban life."
+    description: "Through on-ground citizen awareness campaigns, we drive behaviour change that makes circular living a natural part of everyday urban life.",
+    icon: "https://www.logos.aiesec.org/_next/image?url=https%3A%2F%2Faiesec-logos.s3.eu-west-1.amazonaws.com%2FTGG_Icon_Color_11.png&w=640&q=75"
   },
   {
     number: "12",
     title: "Responsible Consumption & Production",
-    description: "We advance the circular economy by building structured systems for waste reduction, recovery, and scalable recycling infrastructure."
+    description: "We advance the circular economy by building structured systems for waste reduction, recovery, and scalable recycling infrastructure.",
+    icon: "https://www.logos.aiesec.org/_next/image?url=https%3A%2F%2Faiesec-logos.s3.eu-west-1.amazonaws.com%2FTGG_Icon_Color_12.png&w=640&q=75"
   },
   {
     number: "13",
     title: "Climate Action",
-    description: "By diverting waste from landfills through circular programs, we reduce emissions and protect the environment over the long term."
+    description: "By diverting waste from landfills through circular programs, we reduce emissions and protect the environment over the long term.",
+    icon: "https://www.logos.aiesec.org/_next/image?url=https%3A%2F%2Faiesec-logos.s3.eu-west-1.amazonaws.com%2FTGG_Icon_Color_13.png&w=640&q=75"
   },
   {
     number: "14",
     title: "Life Below Water",
-    description: "We prevent ocean pollution by strengthening land-based collection & diversion systems and by fostering source-level awareness."
+    description: "We prevent ocean pollution by strengthening land-based collection & diversion systems and by fostering source-level awareness.",
+    icon: "https://www.logos.aiesec.org/_next/image?url=https%3A%2F%2Faiesec-logos.s3.eu-west-1.amazonaws.com%2FTGG_Icon_Color_14.png&w=640&q=75"
   },
   {
     number: "17",
     title: "Partnerships for the Goals",
-    description: "We collaborate with governments, businesses, and communities to co-create resilient, lasting circular solutions."
+    description: "We collaborate with governments, businesses, and communities to co-create resilient, lasting circular solutions.",
+    icon: "https://www.logos.aiesec.org/_next/image?url=https%3A%2F%2Faiesec-logos.s3.eu-west-1.amazonaws.com%2FTGG_Icon_Color_17.png&w=640&q=75"
   }
 ];
 
@@ -114,11 +121,11 @@ export const contactCTA = {
 
 // ABOUT PAGE CONTENT
 export const aboutPageHero = {
-  title: "RECIRCLE FOUNDATION WAS BUILT FOR THE PEOPLE BEHIND THE SYSTEM."
+  title: "ReCircle Foundation was built for the people behind the system."
 };
 
 export const aboutPageContent = {
-  founded: "ReCircle Foundation was founded in 2023 as a non-profit to strengthen the human side of circularity.",
+  founded: "ReCircle Foundation was founded in April 2025 as a non-profit to strengthen the human side of circularity.",
   story: "We can build a world where no waste goes to waste and call it a day. But a decade in waste recovery taught us that infrastructure is only half the story. The other half are India's waste workers, who show up every day without a wage slip, without insurance, and without so much as a government ID to prove they exist.",
   commitment: "That's the half we refuse to ignore. As your CSR/ESG partner, we apply a three-pronged approach to direct capital to create lasting change, drive behaviour change so more waste stays in circulation, and strengthen the systems that allow this work to continue long after we've left the room.",
   conclusion: "Each step strengthens the next and ensures the circular economy can grow in ways that include the people behind it."
@@ -191,7 +198,7 @@ export const teamMembers = [
 
 // FOCUS AREAS PAGE CONTENT
 export const focusAreasIntro = {
-  title: "If circularity can give materials a second life\nWhy should people be left behind?",
+  title: "If circularity can give materials a second life, why should people be left behind?",
   description: "This is the question we have always asked, and the one we continue to ask as we build systems for recovery with partners who believe their CSR can do more than just meet compliance obligations.",
   conclusion: "That is where our work begins."
 };
