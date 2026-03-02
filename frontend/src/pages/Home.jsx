@@ -72,7 +72,7 @@ const Home = () => {
             Global Sustainable Development Goals
           </h3>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto justify-items-center">
             {sdgCommitments.map((sdg) => (
               <SDGFlipCard key={sdg.number} sdg={sdg} />
             ))}
@@ -91,24 +91,17 @@ const Home = () => {
             {focusAreasPreview.map((area) => (
               <div 
                 key={area.title}
-                className="group h-64 perspective-1000 cursor-pointer"
+                className="bg-[#01298a] rounded-xl p-8 text-center hover:shadow-xl transition-all duration-300"
               >
-                <div className="relative w-full h-full transition-transform duration-700 transform-style-3d group-hover:[transform:rotateY(180deg)]">
-                  {/* Front */}
-                  <div className="absolute inset-0 w-full h-full backface-hidden bg-[#01298a] rounded-xl p-6 flex flex-col items-center justify-center text-white shadow-lg">
-                    <img 
-                      src={area.icon} 
-                      alt={area.title}
-                      className="w-16 h-16 mb-4 object-contain"
-                    />
-                    <h3 className="text-xl font-bold text-center">{area.title}</h3>
-                  </div>
-
-                  {/* Back */}
-                  <div className="absolute inset-0 w-full h-full backface-hidden bg-white rounded-xl p-6 flex items-center justify-center shadow-lg border-2 border-[#01298a] [transform:rotateY(180deg)]">
-                    <p className="text-gray-700 text-center leading-relaxed">{area.description}</p>
-                  </div>
+                <div className="flex justify-center mb-6">
+                  <img 
+                    src={area.icon} 
+                    alt={area.title}
+                    className="w-16 h-16 object-contain"
+                  />
                 </div>
+                <h3 className="text-xl font-bold text-white mb-4">{area.title}</h3>
+                <p className="text-white/90 leading-relaxed text-sm">{area.description}</p>
               </div>
             ))}
           </div>

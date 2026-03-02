@@ -121,8 +121,8 @@ export const impactStats = [
 ];
 
 export const contactCTA = {
-  title: "Be the reason the system changes for good",
-  description: "Join us in building systems that restore value, empower livelihoods, and keep resources in circulation."
+  title: "Take the first step towards real impact",
+  description: "Partner with ReCircle Foundation to build systems that protect livelihoods and sustain themselves."
 };
 
 // ABOUT PAGE CONTENT
@@ -144,12 +144,12 @@ export const visionItems = [
     icon: "https://recircle.in/wp-content/uploads/2026/03/Our-Vision-Formalises-protects-people-icon.png"
   },
   {
-    title: "Drive behavioural change",
+    title: "Drives behavioral change",
     description: "at the grassroots level so more material stays in circulation",
     icon: "https://recircle.in/wp-content/uploads/2026/03/Our-Vision-Drive-behavioural-change-icon.png"
   },
   {
-    title: "Direct capital",
+    title: "Directs capital",
     description: "to strengthen recovery systems and allow them to sustain themselves.",
     icon: "https://recircle.in/wp-content/uploads/2026/03/Our-Vision-Direct-capital-icon.png"
   }
