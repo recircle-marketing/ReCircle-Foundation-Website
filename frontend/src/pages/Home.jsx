@@ -72,10 +72,12 @@ const Home = () => {
             Global Sustainable Development Goals
           </h3>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto justify-items-center">
-            {sdgCommitments.map((sdg) => (
-              <SDGFlipCard key={sdg.number} sdg={sdg} />
-            ))}
+          <div className="flex justify-center">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl justify-items-center">
+              {sdgCommitments.map((sdg) => (
+                <SDGFlipCard key={sdg.number} sdg={sdg} />
+              ))}
+            </div>
           </div>
         </div>
       </section>
