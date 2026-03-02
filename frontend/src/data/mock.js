@@ -67,27 +67,33 @@ export const sdgCommitments = [
 export const focusAreasPreview = [
   {
     title: "WASTE DIVERSION",
-    description: "Keeping valuable materials in circulation, out of landfills"
+    description: "Keeping valuable materials in circulation, out of landfills",
+    icon: "https://recircle.in/wp-content/uploads/2026/03/Waste-Diversion-Icon.png"
   },
   {
     title: "FORMALISATION OF SAFAI SAATHIS",
-    description: "Securing wages, safety, recognition, and better livelihoods"
+    description: "Securing wages, safety, recognition, and better livelihoods",
+    icon: "https://recircle.in/wp-content/uploads/2026/03/Safaai-Saathis-icon.png"
   },
   {
     title: "WASTE INTO RESOURCES",
-    description: "Giving waste a second life as reliable raw materials & products."
+    description: "Giving waste a second life as reliable raw materials & products.",
+    icon: "https://recircle.in/wp-content/uploads/2026/03/Waste-into-resources-icon.png"
   },
   {
     title: "BEHAVIOURAL CHANGE",
-    description: "Empowering individuals to participate in the circular economy."
+    description: "Empowering individuals to participate in the circular economy.",
+    icon: "https://recircle.in/wp-content/uploads/2026/03/Behavioural-change-icon.png"
   },
   {
     title: "LIVELIHOOD OPPORTUNITIES",
-    description: "Building skills, confidence, and long-term opportunity through IEC"
+    description: "Building skills, confidence, and long-term opportunity through IEC",
+    icon: "https://recircle.in/wp-content/uploads/2026/03/Livelihood-Opportunities.png"
   },
   {
     title: "HEALTH & SAFETY ACCESS",
-    description: "Providing check-ups, safety training, and healthcare access"
+    description: "Providing check-ups, safety training, and healthcare access",
+    icon: "https://recircle.in/wp-content/uploads/2026/03/Health-and-safty-icon.png"
   }
 ];
 
@@ -134,42 +140,51 @@ export const aboutPageContent = {
 export const visionItems = [
   {
     title: "Formalises & protects safai saathis",
-    description: "ensuring circularity creates stable, dignified livelihoods."
+    description: "ensuring circularity creates stable, dignified livelihoods.",
+    icon: "https://recircle.in/wp-content/uploads/2026/03/Our-Vision-Formalises-protects-people-icon.png"
   },
   {
     title: "Drive behavioural change",
-    description: "at the grassroots level so more material stays in circulation"
+    description: "at the grassroots level so more material stays in circulation",
+    icon: "https://recircle.in/wp-content/uploads/2026/03/Our-Vision-Drive-behavioural-change-icon.png"
   },
   {
     title: "Direct capital",
-    description: "to strengthen recovery systems and allow them to sustain themselves."
+    description: "to strengthen recovery systems and allow them to sustain themselves.",
+    icon: "https://recircle.in/wp-content/uploads/2026/03/Our-Vision-Direct-capital-icon.png"
   }
 ];
 
 export const corePillars = [
   {
     title: "INCLUSIVITY",
-    description: "for those at the base of the waste value chain: ensuring circularity creates opportunity for the people who sustain it."
+    description: "for those at the base of the waste value chain: ensuring circularity creates opportunity for the people who sustain it.",
+    icon: "https://recircle.in/wp-content/uploads/2026/03/Core-Pillars-Inclusivity.png"
   },
   {
     title: "COLLABORATION",
-    description: "across sectors to pool resources, share responsibility, and build systems that no single actor can build alone."
+    description: "across sectors to pool resources, share responsibility, and build systems that no single actor can build alone.",
+    icon: "https://recircle.in/wp-content/uploads/2026/03/Core-Pillars-Collaboration-icon.png"
   },
   {
     title: "TRANSPARENCY",
-    description: "at every step, which ensures every initiative is measured and accountable."
+    description: "at every step, which ensures every initiative is measured and accountable.",
+    icon: "https://recircle.in/wp-content/uploads/2026/03/Core-Pillars-Transparency-icon.png"
   },
   {
     title: "INNOVATION",
-    description: "in how waste is understood and managed, using design, technology, and storytelling to turn circular living into everyday practice."
+    description: "in how waste is understood and managed, using design, technology, and storytelling to turn circular living into everyday practice.",
+    icon: "https://recircle.in/wp-content/uploads/2026/03/Core-Pillars-Innovation-icon.png"
   },
   {
     title: "LOCAL-FIRST",
-    description: "in our execution, building and proving models in Mumbai before scaling them through our national partner network."
+    description: "in our execution, building and proving models in Mumbai before scaling them through our national partner network.",
+    icon: "https://recircle.in/wp-content/uploads/2026/03/Core-Pillars-Innovation-icon-2.png"
   },
   {
     title: "INSIGHT-DRIVEN",
-    description: "in every intervention, designed around what communities need to sustain themselves, not what looks good on paper."
+    description: "in every intervention, designed around what communities need to sustain themselves, not what looks good on paper.",
+    icon: "https://recircle.in/wp-content/uploads/2026/03/Core-Pillars-Insight-Driven-icon.png"
   }
 ];
 
