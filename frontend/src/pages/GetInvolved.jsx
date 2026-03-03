@@ -52,7 +52,7 @@ const GetInvolved = () => {
                 <Phone size={32} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Call Us</h3>
-              <p className="text-gray-600">+91 (0) 000 000 0000</p>
+              <p className="text-gray-600">+91 90042 40004</p>
             </div>
 
             <div className="bg-brand-offwhite rounded-xl p-8 text-center hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 border-[#01298a]/20">
