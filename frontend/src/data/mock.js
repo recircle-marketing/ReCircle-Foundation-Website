@@ -4,6 +4,7 @@ export const navigationLinks = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
   { name: 'Focus Areas', path: '/focus-areas' },
+  { name: 'Knowledge Centre', path: '/knowledge-centre' },
   { name: 'Impact', path: 'https://www.recircle.in/impact', external: true },
   { name: 'Get Involved', path: '/get-involved' }
 ];

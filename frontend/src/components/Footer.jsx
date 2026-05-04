@@ -41,6 +41,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/knowledge-centre" className="text-white/80 hover:text-brand-yellow transition-colors">
+                  Knowledge Centre
+                </Link>
+              </li>
+              <li>
                 <a 
                   href="https://www.recircle.in/impact" 
                   target="_blank" 

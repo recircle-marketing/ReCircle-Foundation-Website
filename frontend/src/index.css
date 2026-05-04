@@ -61,6 +61,82 @@ html {
     animation: fade-in 1s ease-out;
 }
 
+/* TipTap editor placeholder */
+.tiptap p.is-editor-empty:first-child::before {
+    color: #9ca3af;
+    content: attr(data-placeholder);
+    float: left;
+    height: 0;
+    pointer-events: none;
+}
+
+.tiptap:focus {
+    outline: none;
+}
+
+.tiptap h1 { font-size: 2rem; font-weight: 700; margin: 1.25rem 0 0.75rem; }
+.tiptap h2 { font-size: 1.5rem; font-weight: 700; margin: 1rem 0 0.5rem; }
+.tiptap h3 { font-size: 1.25rem; font-weight: 600; margin: 1rem 0 0.5rem; }
+.tiptap ul { list-style: disc; padding-left: 1.5rem; }
+.tiptap ol { list-style: decimal; padding-left: 1.5rem; }
+.tiptap blockquote {
+    border-left: 4px solid #01298a;
+    padding: 0.25rem 1rem;
+    color: #4b5563;
+    font-style: italic;
+    margin: 1rem 0;
+}
+.tiptap pre {
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+.tiptap code {
+    background: #f1f5f9;
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    font-size: 0.9em;
+}
+.tiptap pre code {
+    background: transparent;
+    padding: 0;
+}
+
+/* Public blog content styling */
+.blog-content {
+    color: #1f2937;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+.blog-content h1 { font-size: 2rem; font-weight: 700; margin: 1.5rem 0 1rem; color: #111827; }
+.blog-content h2 { font-size: 1.5rem; font-weight: 700; margin: 1.5rem 0 0.75rem; color: #111827; }
+.blog-content h3 { font-size: 1.25rem; font-weight: 600; margin: 1.25rem 0 0.5rem; color: #111827; }
+.blog-content p { margin: 0.75rem 0; }
+.blog-content ul { list-style: disc; padding-left: 1.5rem; margin: 0.75rem 0; }
+.blog-content ol { list-style: decimal; padding-left: 1.5rem; margin: 0.75rem 0; }
+.blog-content li { margin: 0.25rem 0; }
+.blog-content a { color: #01298a; text-decoration: underline; }
+.blog-content blockquote {
+    border-left: 4px solid #01298a;
+    padding: 0.5rem 1.25rem;
+    color: #374151;
+    font-style: italic;
+    margin: 1.25rem 0;
+    background: #f9fafb;
+}
+.blog-content img { border-radius: 0.5rem; margin: 1.25rem 0; max-width: 100%; height: auto; }
+.blog-content pre { background: #0f172a; color: #e2e8f0; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin: 1rem 0; }
+.blog-content code { background: #f1f5f9; padding: 0.125rem 0.375rem; border-radius: 0.25rem; font-size: 0.9em; }
+.blog-content pre code { background: transparent; padding: 0; }
+.blog-content table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+.blog-content table td, .blog-content table th { border: 1px solid #e5e7eb; padding: 0.5rem 0.75rem; }
+.blog-content table th { background: #f9fafb; }
+.blog-content hr { margin: 2rem 0; border-color: #e5e7eb; }
+.blog-content iframe { width: 100%; aspect-ratio: 16/9; border-radius: 0.5rem; margin: 1rem 0; }
+
 @layer base {
     :root {
         --background: 0 0% 100%;
