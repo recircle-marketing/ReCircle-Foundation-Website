@@ -6,7 +6,6 @@ from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
 import re
-import shutil
 import uuid
 from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict
@@ -340,6 +339,7 @@ async def delete_blog(blog_id: str, _: bool = Depends(require_admin)):
 
 # ----- Image upload -----
 ALLOWED_IMAGE_EXT = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg"}
+MAX_UPLOAD_BYTES = 5 * 1024 * 1024  # 5 MB
 
 
 @api_router.post("/admin/upload")
@@ -347,10 +347,13 @@ async def upload_image(file: UploadFile = File(...), _: bool = Depends(require_a
     ext = Path(file.filename or "").suffix.lower()
     if ext not in ALLOWED_IMAGE_EXT:
         raise HTTPException(status_code=400, detail="Unsupported image type")
+    contents = await file.read()
+    if len(contents) > MAX_UPLOAD_BYTES:
+        raise HTTPException(status_code=413, detail="Image too large (max 5MB)")
     new_name = f"{uuid.uuid4().hex}{ext}"
     dest = UPLOAD_DIR / new_name
     with dest.open("wb") as f:
-        shutil.copyfileobj(file.file, f)
+        f.write(contents)
     return {"url": f"/api/uploads/{new_name}", "filename": new_name}
 
 

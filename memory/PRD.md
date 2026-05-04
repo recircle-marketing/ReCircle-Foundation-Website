@@ -328,3 +328,45 @@ NOT like:
 **Last Updated:** February 28, 2026  
 **Version:** 1.0 (Frontend MVP Complete)  
 **Next Review:** Upon backend development start
+
+---
+
+## Phase 2 Update — Knowledge Centre (Blog Ecosystem)
+**Date Completed:** February 4, 2026
+
+### Scope shipped
+- Public Knowledge Centre at `/knowledge-centre` (and `/blogs` redirect) with hero (Blogs / Insights from India's evolving waste ecosystem), 3-col responsive grid, 9 cards per page, pagination (Previous / 1..n / Next), date format `dd-Month-yyyy`, line-clamped titles & summaries, hover lift + image zoom.
+- Individual blog page `/blogs/:slug` with featured-image hero, author/category/date band, 70/30 layout, full HTML content rendering, sidebar with live search and Recent/Related blogs (tag-matched + recency backfill).
+- Admin CMS at `/admin/login`, `/admin/blogs`, `/admin/blogs/new`, `/admin/blogs/:id` protected by a single shared password (env `ADMIN_PASSWORD`, default `ReCircle@2026`).
+- TipTap rich-text editor: H1/H2/H3, bold/italic/underline/strike/code, lists, quote, code block, horizontal rule, alignment, link, image upload + image-by-URL, YouTube embed, table, undo/redo.
+- Image upload endpoint `POST /api/admin/upload` → `/api/uploads/<filename>` (5 MB limit).
+- SEO support: meta_title, meta_description, slug auto-generation with collision suffixing, single H1 per blog page, lazy-loading images, `<title>` and meta-description updated per blog.
+- 5 sample blogs seeded via `/app/backend/scripts/seed_blogs.py`.
+
+### Backend endpoints added
+- `POST /api/admin/login` · `GET /api/admin/verify`
+- `GET /api/blogs` (page, per_page, search, category, tag, sort, include_unpublished)
+- `GET /api/blogs/slug/{slug}` · `GET /api/blogs/related/{slug}` · `GET /api/blogs/{id}` (admin)
+- `POST /api/admin/blogs` · `PUT /api/admin/blogs/{id}` · `DELETE /api/admin/blogs/{id}`
+- `POST /api/admin/upload` (multipart image upload, 5 MB max)
+- `GET /api/blogs-meta/categories` · `GET /api/blogs-meta/tags`
+- Static mount: `GET /api/uploads/<filename>` for uploaded media.
+
+### Files created
+- Backend: `server.py` (rewritten), `scripts/seed_blogs.py`, `tests/test_blogs_api.py`
+- Frontend: `lib/api.js`, `components/BlogCard.jsx`, `components/Pagination.jsx`, `components/RichTextEditor.jsx`, `pages/KnowledgeCentre.jsx`, `pages/BlogPost.jsx`, `pages/AdminLogin.jsx`, `pages/AdminBlogs.jsx`, `pages/AdminBlogEditor.jsx`
+- Frontend updates: `App.js` routes + admin chrome wrapper, `data/mock.js` nav link, `components/Footer.jsx` quick links, `index.css` blog/editor styling, `tailwind.config.js` typography plugin.
+
+### Test results (testing_agent_v3_fork iteration_1)
+- Backend: 21/21 pytest passing — list / pagination / search / slug / related / login / verify / CRUD / include_unpublished gating / image upload roundtrip / `_id` leak checks.
+- Frontend: 100% of tested flows — public listing, detail page, sidebar search, admin login (correct + wrong), admin dashboard, create/edit/delete with TipTap.
+
+### Pending / Backlog
+- P1: Filters by category / tag and a dedicated `/search` results page.
+- P1: Object-storage migration for images (currently local disk under `/app/backend/uploads/`).
+- P1: Newsletter capture endpoint (already foreseen in earlier roadmap).
+- P2: Comments + comment form on individual blog pages.
+- P2: Email notification on contact form / new blog publish (Resend or SendGrid).
+- P2: Real banner image for Knowledge Centre hero (placeholder from Unsplash currently).
+- P2: WCAG 2.1 AA audit; structured data (Article schema) for richer SEO.
+

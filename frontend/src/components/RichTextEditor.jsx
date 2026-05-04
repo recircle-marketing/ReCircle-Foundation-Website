@@ -228,7 +228,7 @@ const RichTextEditor = ({ value, onChange, placeholder = 'Start writing your blo
       <EditorContent
         editor={editor}
         className="prose prose-lg max-w-none px-6 py-6 min-h-[400px] focus:outline-none"
-        data-testid="rich-text-editor-content"
+        data-testid="admin-form-content"
       />
     </div>
   );
