@@ -206,11 +206,11 @@ const BlogPost = () => {
               {related.length === 0 ? (
                 <p className="text-sm text-gray-500">No related posts yet.</p>
               ) : (
-                <ul className="space-y-4">
+                <ul className="divide-y divide-gray-100">
                   {related.map((r) => (
-                    <li key={r.id} className="flex gap-3 group">
-                      <Link to={`/blogs/${r.slug}`} className="flex gap-3 group">
-                        <div className="w-20 h-16 flex-shrink-0 overflow-hidden rounded bg-gray-100">
+                    <li key={r.id} className="py-4 first:pt-0 last:pb-0">
+                      <Link to={`/blogs/${r.slug}`} className="flex items-start gap-3 group">
+                        <div className="w-24 h-20 flex-shrink-0 overflow-hidden rounded bg-gray-100">
                           {r.featured_image && (
                             <img
                               src={resolveImageUrl(r.featured_image)}
@@ -220,9 +220,9 @@ const BlogPost = () => {
                             />
                           )}
                         </div>
-                        <div className="min-w-0">
-                          <p className="text-xs text-gray-500">{formatBlogDate(r.date)}</p>
-                          <p className="text-sm font-medium text-gray-900 group-hover:text-brand-blue line-clamp-2">
+                        <div className="min-w-0 flex-1">
+                          <p className="text-xs text-gray-500 mb-1">{formatBlogDate(r.date)}</p>
+                          <p className="text-sm font-medium text-gray-900 group-hover:text-brand-blue line-clamp-2 leading-snug">
                             {r.title}
                           </p>
                         </div>
