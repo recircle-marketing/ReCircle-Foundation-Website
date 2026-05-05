@@ -4,7 +4,7 @@ import BlogCard from '../components/BlogCard';
 import Pagination from '../components/Pagination';
 import { api } from '../lib/api';
 
-const HERO_IMAGE = 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=2000&q=80';
+const HERO_IMAGE = 'https://customer-assets.emergentagent.com/job_7c0a8115-aae0-4e76-94eb-7d9b8d0ac199/artifacts/i3any0ku_DSC09137.JPG';
 
 const KnowledgeCentre = () => {
   const [searchParams, setSearchParams] = useSearchParams();
