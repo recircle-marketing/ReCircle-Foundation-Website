@@ -141,6 +141,7 @@ async function createBlog(payload, actor) {
     author: payload.author,
     category: payload.category ?? '',
     tags: payload.tags ?? [],
+    faqs: payload.faqs ?? [],
     date: payload.date,
     meta_title: payload.meta_title ?? null,
     meta_description: payload.meta_description ?? null,

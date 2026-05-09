@@ -1,5 +1,10 @@
 const { z } = require('zod');
 
+const faqItemSchema = z.object({
+  question: z.string().min(1, 'Question is required'),
+  answer: z.string().min(1, 'Answer is required'),
+});
+
 const blogCreateSchema = z.object({
   title: z.string().min(1),
   summary: z.string().min(1),
@@ -8,6 +13,7 @@ const blogCreateSchema = z.object({
   author: z.string().min(1),
   category: z.string().optional().default(''),
   tags: z.array(z.string()).optional().default([]),
+  faqs: z.array(faqItemSchema).optional().default([]),
   date: z.string().min(1),
   meta_title: z.string().nullable().optional(),
   meta_description: z.string().nullable().optional(),
@@ -25,6 +31,7 @@ const blogUpdateSchema = z
     author: z.string().min(1).optional(),
     category: z.string().optional(),
     tags: z.array(z.string()).optional(),
+    faqs: z.array(faqItemSchema).optional(),
     date: z.string().optional(),
     meta_title: z.string().nullable().optional(),
     meta_description: z.string().nullable().optional(),
@@ -51,7 +58,9 @@ function toListItem(doc) {
 function toFullBlog(doc) {
   if (!doc) return null;
   const { _id, ...rest } = doc;
+  // Ensure faqs is always an array (older docs may not have it).
+  if (!Array.isArray(rest.faqs)) rest.faqs = [];
   return rest;
 }
 
-module.exports = { blogCreateSchema, blogUpdateSchema, toListItem, toFullBlog };
+module.exports = { blogCreateSchema, blogUpdateSchema, faqItemSchema, toListItem, toFullBlog };

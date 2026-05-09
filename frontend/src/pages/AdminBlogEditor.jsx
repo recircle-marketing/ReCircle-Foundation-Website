@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { ArrowLeft, Save, Upload } from 'lucide-react';
+import { ArrowLeft, Save, Upload, Plus, Trash2, ChevronUp, ChevronDown } from 'lucide-react';
 import RichTextEditor from '../components/RichTextEditor';
 import { api, getAdminToken, resolveImageUrl } from '../lib/api';
 
@@ -19,6 +19,7 @@ const emptyForm = () => ({
   meta_title: '',
   meta_description: '',
   published: true,
+  faqs: [],
 });
 
 const AdminBlogEditor = () => {
@@ -57,6 +58,7 @@ const AdminBlogEditor = () => {
           meta_title: b.meta_title || '',
           meta_description: b.meta_description || '',
           published: !!b.published,
+          faqs: Array.isArray(b.faqs) ? b.faqs.map((f) => ({ question: f.question || '', answer: f.answer || '' })) : [],
         });
       } catch (e) {
         setError('Failed to load blog.');
@@ -92,6 +94,15 @@ const AdminBlogEditor = () => {
       setError('Title, summary and author are required.');
       return;
     }
+    // Validate FAQs: each entry must have both question + answer (or be removed).
+    const cleanedFaqs = form.faqs
+      .map((f) => ({ question: (f.question || '').trim(), answer: (f.answer || '').trim() }))
+      .filter((f) => f.question || f.answer);
+    const incomplete = cleanedFaqs.find((f) => !f.question || !f.answer);
+    if (incomplete) {
+      setError('Each FAQ needs both a question and an answer (or remove the entry).');
+      return;
+    }
     setSaving(true);
     const payload = {
       ...form,
@@ -99,6 +110,7 @@ const AdminBlogEditor = () => {
         .split(',')
         .map((t) => t.trim())
         .filter(Boolean),
+      faqs: cleanedFaqs,
     };
     if (!form.slug.trim()) delete payload.slug;
     try {
@@ -114,6 +126,24 @@ const AdminBlogEditor = () => {
       setSaving(false);
     }
   };
+
+  // ----- FAQ helpers -----
+  const addFaq = () => setForm((f) => ({ ...f, faqs: [...f.faqs, { question: '', answer: '' }] }));
+  const removeFaq = (idx) =>
+    setForm((f) => ({ ...f, faqs: f.faqs.filter((_, i) => i !== idx) }));
+  const updateFaq = (idx, key, value) =>
+    setForm((f) => ({
+      ...f,
+      faqs: f.faqs.map((it, i) => (i === idx ? { ...it, [key]: value } : it)),
+    }));
+  const moveFaq = (idx, dir) =>
+    setForm((f) => {
+      const next = [...f.faqs];
+      const j = idx + dir;
+      if (j < 0 || j >= next.length) return f;
+      [next[idx], next[j]] = [next[j], next[idx]];
+      return { ...f, faqs: next };
+    });
 
   if (loading) {
     return <div className="px-6 py-10 max-w-4xl mx-auto">Loading...</div>;
@@ -271,6 +301,102 @@ const AdminBlogEditor = () => {
               value={form.content_html}
               onChange={(html) => update('content_html', html)}
             />
+          </div>
+
+          {/* Frequently Asked Questions */}
+          <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4" data-testid="admin-form-faqs">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <h3 className="font-semibold text-gray-900">Frequently Asked Questions (FAQs)</h3>
+                <p className="text-sm text-gray-500 mt-1">
+                  Optional. Add Q&amp;A pairs that complement the article. They are stored with the post and exposed via the API for future on-page rendering and rich-result SEO.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={addFaq}
+                data-testid="admin-form-faq-add"
+                className="inline-flex shrink-0 items-center gap-2 px-3 py-2 bg-brand-blue text-white rounded-md hover:opacity-90 text-sm"
+              >
+                <Plus size={14} /> Add FAQ
+              </button>
+            </div>
+
+            {form.faqs.length === 0 ? (
+              <div className="rounded-md border border-dashed border-gray-300 p-6 text-center text-sm text-gray-500">
+                No FAQs yet. Click <span className="font-medium text-gray-700">"Add FAQ"</span> to create your first one.
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {form.faqs.map((faq, idx) => (
+                  <div
+                    key={idx}
+                    data-testid={`admin-form-faq-item-${idx}`}
+                    className="rounded-lg border border-gray-200 bg-gray-50 p-4"
+                  >
+                    <div className="flex items-start justify-between gap-2 mb-3">
+                      <span className="inline-flex items-center px-2 py-0.5 rounded-full bg-brand-blue/10 text-brand-blue text-xs font-semibold">
+                        FAQ #{idx + 1}
+                      </span>
+                      <div className="flex items-center gap-1">
+                        <button
+                          type="button"
+                          onClick={() => moveFaq(idx, -1)}
+                          disabled={idx === 0}
+                          title="Move up"
+                          className="p-1.5 rounded hover:bg-gray-200 text-gray-500 disabled:opacity-30 disabled:cursor-not-allowed"
+                          data-testid={`admin-form-faq-up-${idx}`}
+                        >
+                          <ChevronUp size={14} />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => moveFaq(idx, 1)}
+                          disabled={idx === form.faqs.length - 1}
+                          title="Move down"
+                          className="p-1.5 rounded hover:bg-gray-200 text-gray-500 disabled:opacity-30 disabled:cursor-not-allowed"
+                          data-testid={`admin-form-faq-down-${idx}`}
+                        >
+                          <ChevronDown size={14} />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => removeFaq(idx)}
+                          title="Remove this FAQ"
+                          className="p-1.5 rounded hover:bg-red-50 text-gray-500 hover:text-red-600"
+                          data-testid={`admin-form-faq-remove-${idx}`}
+                        >
+                          <Trash2 size={14} />
+                        </button>
+                      </div>
+                    </div>
+
+                    <label className="block text-xs font-medium text-gray-700 mb-1">
+                      Question
+                    </label>
+                    <input
+                      type="text"
+                      value={faq.question}
+                      onChange={(e) => updateFaq(idx, 'question', e.target.value)}
+                      placeholder="e.g. How does ReCircle measure impact?"
+                      data-testid={`admin-form-faq-question-${idx}`}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-brand-blue mb-3"
+                    />
+                    <label className="block text-xs font-medium text-gray-700 mb-1">
+                      Answer
+                    </label>
+                    <textarea
+                      value={faq.answer}
+                      onChange={(e) => updateFaq(idx, 'answer', e.target.value)}
+                      placeholder="Write a clear, concise answer."
+                      rows={3}
+                      data-testid={`admin-form-faq-answer-${idx}`}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-brand-blue resize-y"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4">
