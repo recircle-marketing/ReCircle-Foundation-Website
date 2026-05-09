@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Search, ArrowLeft } from 'lucide-react';
 import { api, formatBlogDate, resolveImageUrl } from '../lib/api';
+import BlogFaqs from '../components/BlogFaqs';
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -149,6 +150,9 @@ const BlogPost = () => {
               data-testid="blog-detail-content"
               dangerouslySetInnerHTML={{ __html: blog.content_html || '' }}
             />
+
+            <BlogFaqs faqs={blog.faqs} />
+
             {blog.tags && blog.tags.length > 0 && (
               <div className="mt-10 pt-6 border-t border-gray-100 flex flex-wrap gap-2" data-testid="blog-detail-tags">
                 {blog.tags.map((t) => (
