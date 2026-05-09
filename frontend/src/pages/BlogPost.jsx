@@ -107,19 +107,20 @@ const BlogPost = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="pt-20 bg-gray-50" data-testid="blog-hero">
-        <div className="w-full">
-          {blog.featured_image && (
-            <div className="w-full h-[40vh] min-h-[300px] md:h-[55vh] md:min-h-[420px] bg-gray-200 overflow-hidden">
+      <section className="pt-24 md:pt-28 bg-gray-50" data-testid="blog-hero">
+        {blog.featured_image && (
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="rounded-2xl overflow-hidden shadow-[0_10px_40px_-15px_rgba(1,41,138,0.25)] bg-white ring-1 ring-gray-100">
               <img
                 src={resolveImageUrl(blog.featured_image)}
                 alt={blog.title}
-                className="w-full h-full object-cover"
+                className="block w-full h-auto max-h-[600px] object-contain bg-gray-50"
+                loading="eager"
               />
             </div>
-          )}
-        </div>
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6 flex flex-wrap gap-3 items-center text-sm text-gray-700">
+          </div>
+        )}
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 md:mt-8 flex flex-wrap gap-3 items-center text-sm text-gray-700">
           <span className="font-medium" data-testid="blog-detail-author">By {blog.author}</span>
           <span className="text-gray-300">|</span>
           {blog.category && (
