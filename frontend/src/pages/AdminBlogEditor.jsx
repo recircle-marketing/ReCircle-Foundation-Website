@@ -116,11 +116,11 @@ const AdminBlogEditor = () => {
   };
 
   if (loading) {
-    return <div className="pt-32 max-w-4xl mx-auto px-6">Loading...</div>;
+    return <div className="px-6 py-10 max-w-4xl mx-auto">Loading...</div>;
   }
 
   return (
-    <div className="min-h-screen pt-24 pb-20 bg-gray-50 px-4 sm:px-6 lg:px-8">
+    <div className="px-4 sm:px-6 lg:px-10 py-8">
       <div className="max-w-5xl mx-auto">
         <div className="flex items-center justify-between mb-6">
           <Link to="/admin/blogs" className="inline-flex items-center gap-2 text-sm text-gray-700 hover:text-brand-blue">

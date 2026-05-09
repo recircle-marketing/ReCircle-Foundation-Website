@@ -1,0 +1,49 @@
+{
+  "summary": "Full backend (Node/Express via Python proxy shim) + frontend regression for the new RBAC layer (super_admin / admin / editor / author). Backend pytest = 38/38 passing covering health, JWT auth (login + verify + /auth/me), user CRUD with all RBAC negative tests (admin cannot touch super_admin, editor/author 403 on /api/users, self-delete + last-super_admin guards, password update + re-login, validation), public blog list/search/slug/related/include_unpublished, blog RBAC (author publish-bypass silently stripped, author update/delete on others 403, editor can publish, scoped include_unpublished for author), image upload (success + non-image rejected + auth required), and _id leak checks on /api/blogs and /api/users. Frontend Playwright covered admin login (empty fields, wrong password error, all 4 role logins), sidebar RBAC (Users link only for super_admin/admin), super_admin /admin/users CRUD modal (list 5 users, create new user, delete via confirm), author /admin/users handled gracefully (403 -> empty/error, no crash), logout clears token and redirects, /blogs -> /knowledge-centre redirect with no admin chrome leak.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "AdminLayout.handleLogout",
+        "issue": "After clicking Logout, token is cleared and route redirects to /admin/login, but the localStorage key 'recircle_admin_user' still contains the previous user object. Functionally harmless because the protected guard only checks the token, but it leaks stale user metadata between sessions on shared browsers. clearAdminToken() removes both keys in lib/api.js — investigate whether a downstream effect (navigate -> AdminLogin -> verify) is racing and re-writing the user. Recommended: explicitly call setCurrentUser(null) in handleLogout after clearAdminToken(), or order navigate() to occur after a microtask.",
+        "selector": "[data-testid=\"admin-logout-btn\"]",
+        "priority": "LOW"
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_backend_node.py",
+    "/app/test_reports/pytest/node_results.xml"
+  ],
+  "action_items": [
+    "Optional polish: ensure logout fully removes 'recircle_admin_user' from localStorage (see frontend_issues above).",
+    "Console hydration warnings ('<tr> cannot be a child of <span>', '<option> cannot be a child of <span>') are emitted by the visual-editor wrapper (data-ve-dynamic spans injected into <tbody>/<select>). They are not in the app source but pollute devtools — consider disabling the visual editor instrumentation for table/select children, or wrap rows differently.",
+    "Sporadic 500s seen in browser console come from preview-side static asset / websocket fetches and were not reproduced via curl on /api/* — no action needed unless they re-appear in production."
+  ],
+  "critical_code_review_comments": [
+    "permissions.js canManageUser allows admin to manage other admins (target.role !== 'super_admin'). This means admin can delete/demote a peer admin, which is fine per spec but worth surfacing in UI as a confirmation step.",
+    "blogService 'own' scope relies on created_by being set to user.id at create time — confirmed wired (test_author_create_sets_created_by passes). Make sure historical blogs from the python era backfill created_by, otherwise editors-only fallback is required.",
+    "validate.js returns 400 with code VALIDATION_ERROR but the Zod issue list is not echoed back to the client in the body shown by the failing test ({\"detail\":\"Validation failed\",\"code\":\"VALIDATION_ERROR\"}). Including issues array would make API errors easier to debug for FE devs.",
+    "Express trusts `Authorization: <raw>` (no Bearer) as a token (auth.js line 17). Backwards-compat for old python clients but should log a deprecation warning.",
+    "AdminUsers.jsx: form sends email field on PUT even when unchanged. The server lowercases on update, fine, but if email is unchanged the API still triggers a write and updates updated_at — minor.",
+    "No server-side max file size on /api/admin/upload (the test 'max 5MB' is unverified — multer config not asserted). Recommend explicit `limits: { fileSize: 5*1024*1024 }`."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_backend_node.py (new, 38 tests)"
+  ],
+  "success_rate": {
+    "backend": "100% (38/38)",
+    "frontend": "94% (16/17 flows; logout-user-key cleanup is minor)"
+  },
+  "test_credentials": "Per /app/memory/test_credentials.md — all 4 seeded accounts use ReCircle@2026.",
+  "seed_data_creation": "Tests created TEST_-prefixed users and blogs and cleaned them up via super_admin token. No seeded user/blog was modified or deleted. DB state preserved (4 users + 5 blogs).",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Backend regression at /app/backend/tests/test_backend_node.py — invokes the public REACT_APP_BACKEND_URL (uvicorn 8001 -> node 8002 proxy). All RBAC matrix tests live there. Blog create payload schema requires content_html (NOT content) and date (string). User creation requires password >= 8 chars and valid email. JWT is in 'token' field of /admin/login response and decoded into req.user via authenticate middleware. ObjectId _id is stripped at the projection layer in services. Frontend stores JWT in localStorage 'recircle_admin_token' (and user metadata in 'recircle_admin_user'). Hydration warnings from visual-editor wrappers can be ignored.",
+  "rca of the issue": "Logout-user-key residue: clearAdminToken in /app/frontend/src/lib/api.js does call localStorage.removeItem(USER_KEY) at line 16, but observation shows USER key still present after handleLogout(). Hypothesis: AdminLogin component mounts after navigate('/admin/login'), and although there is no token to verify, an existing 401 axios interceptor or React 18 strict-mode double effect may not be cleaning USER. Reproduce by: login as editor -> click [data-testid=admin-logout-btn] -> page.evaluate(() => localStorage.getItem('recircle_admin_user')) returns the stale user JSON. Mitigation: in handleLogout, call setCurrentUser(null); clearAdminToken(); navigate('/admin/login'); — explicit removal protects against any subsequent re-write."
+}

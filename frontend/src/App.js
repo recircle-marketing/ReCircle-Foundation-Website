@@ -13,8 +13,10 @@ import TermsOfService from "@/pages/TermsOfService";
 import KnowledgeCentre from "@/pages/KnowledgeCentre";
 import BlogPost from "@/pages/BlogPost";
 import AdminLogin from "@/pages/AdminLogin";
+import AdminLayout from "@/pages/AdminLayout";
 import AdminBlogs from "@/pages/AdminBlogs";
 import AdminBlogEditor from "@/pages/AdminBlogEditor";
+import AdminUsers from "@/pages/AdminUsers";
 
 function ChromeWrapper({ children }) {
   const location = useLocation();
@@ -47,11 +49,14 @@ function App() {
             <Route path="/blogs/:slug" element={<BlogPost />} />
 
             {/* Admin */}
-            <Route path="/admin" element={<Navigate to="/admin/blogs" replace />} />
             <Route path="/admin/login" element={<AdminLogin />} />
-            <Route path="/admin/blogs" element={<AdminBlogs />} />
-            <Route path="/admin/blogs/new" element={<AdminBlogEditor />} />
-            <Route path="/admin/blogs/:id" element={<AdminBlogEditor />} />
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<Navigate to="blogs" replace />} />
+              <Route path="blogs" element={<AdminBlogs />} />
+              <Route path="blogs/new" element={<AdminBlogEditor />} />
+              <Route path="blogs/:id" element={<AdminBlogEditor />} />
+              <Route path="users" element={<AdminUsers />} />
+            </Route>
           </Routes>
         </ChromeWrapper>
         <Toaster position="top-right" />
