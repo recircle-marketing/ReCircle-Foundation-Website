@@ -10,7 +10,9 @@ const validate = (schema, source = 'body') => (req, _res, next) => {
   } catch (e) {
     if (e instanceof ZodError) {
       const issues = e.issues.map((i) => ({ path: i.path.join('.'), message: i.message }));
-      return next(new HttpError(400, 'Validation failed', 'VALIDATION_ERROR', issues));
+      const err = new HttpError(400, 'Validation failed', 'VALIDATION_ERROR');
+      err.issues = issues;
+      return next(err);
     }
     next(e);
   }

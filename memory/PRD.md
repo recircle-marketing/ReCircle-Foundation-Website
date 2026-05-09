@@ -370,3 +370,66 @@ NOT like:
 - P2: Real banner image for Knowledge Centre hero (placeholder from Unsplash currently).
 - P2: WCAG 2.1 AA audit; structured data (Article schema) for richer SEO.
 
+---
+
+## Phase 3 Update — Backend Migration to Node.js + RBAC
+**Date Completed:** May 9, 2026
+
+### Summary
+Rewrote the backend from FastAPI/Python to **Node.js 20 + Express 4** in a clean, modular layout (`config/ middleware/ models/ services/ controllers/ routes/ utils/`). Added full **User Management** with **JWT email+password auth** and **role-based access control** across 4 roles.
+
+### Architecture
+- The platform's `supervisord.conf` is read-only and runs `uvicorn server:app`. We keep a tiny FastAPI shim at `/app/backend/server.py` that:
+  1. spawns `node --watch server.js` on `NODE_BACKEND_PORT=8002`,
+  2. transparently proxies all HTTP traffic from port 8001 → 8002 (streaming, hop-by-hop headers stripped).
+- All business logic lives in Node (`/app/backend/server.js` + `/app/backend/src/`). The Python files are archived at `/app/backend/_python_archive/` for reference.
+
+### Tech stack
+- Express 4, MongoDB native driver 6 (motor-equivalent), Zod for validation, bcryptjs for password hashing, jsonwebtoken (HS256, 7-day expiry), multer for file uploads, helmet + cors + morgan for hardening / logging, slugify + uuid for IDs.
+
+### RBAC matrix
+| Role | Blog perms | User perms |
+|---|---|---|
+| `super_admin` | all (`*`) | all (`*`) |
+| `admin` | create / read / update / delete / publish / read_unpublished | read / create / update / delete (cannot touch other super_admins) |
+| `editor` | create / read / update / delete / publish / read_unpublished | — |
+| `author` | create + read; update/delete/read_unpublished only on **own** blogs; cannot publish (publish flag silently stripped) | — |
+
+Permission checks live in `src/config/permissions.js` and are enforced via `middleware/auth.js requirePermission(...)`. Mirror copy in the frontend (`src/lib/api.js hasPermission`) drives role-aware UI rendering.
+
+### Endpoints (Node)
+- **Auth:** `POST /api/admin/login` (email + password → `{token, user}`), `GET /api/admin/verify`, `GET /api/auth/me`, `POST /api/auth/change-password`.
+- **Users:** `GET /api/users`, `GET /api/users/:id`, `POST /api/users`, `PUT /api/users/:id`, `DELETE /api/users/:id` — all gated by `user:*` permissions.
+- **Blogs (public):** `GET /api/blogs`, `GET /api/blogs/slug/:slug`, `GET /api/blogs/related/:slug`, `GET /api/blogs-meta/categories`, `GET /api/blogs-meta/tags`.
+- **Blogs (admin):** `GET /api/blogs/:id`, `POST /api/admin/blogs`, `PUT /api/admin/blogs/:id`, `DELETE /api/admin/blogs/:id`.
+- **Upload:** `POST /api/admin/upload` (5 MB max, image-only) → `/api/uploads/<file>` static mount.
+- **Health:** `GET /api/_health`.
+
+### Seed data (idempotent at boot)
+- 4 default users (all share `ADMIN_PASSWORD` from `.env`):
+  - `superadmin@recircle.org` (super_admin)
+  - `admin@recircle.org` (admin)
+  - `editor@recircle.org` (editor)
+  - `author@recircle.org` (author)
+- 5 sample blog posts via `node /app/backend/src/scripts/seedBlogs.js`.
+
+### Frontend updates
+- `AdminLogin.jsx` — switched to email + password form.
+- `AdminLayout.jsx` (new) — sidebar layout with role-aware nav (Users link only visible when `user:read`).
+- `AdminUsers.jsx` (new) — list + create/edit/delete users via modal, role select, active toggle, password reset.
+- `AdminBlogs.jsx` — toggle/edit/delete buttons hidden when user lacks the relevant permission; author sees only own.
+- `lib/api.js` — JWT storage, axios interceptors, `hasPermission()` helper, role labels.
+- `App.js` — admin routes nested under `/admin/*` with `<AdminLayout>` outlet.
+
+### Test results — testing_agent_v3_fork iteration_2
+- Backend: **38/38 pytest passing** (auth, JWT, full CRUD with all RBAC negative paths, validation, _id-leak checks).
+- Frontend: **16/17 flows passing**; one cosmetic logout-cleanup nit fixed post-test (now explicitly clears `recircle_admin_user` and uses `replace: true`).
+
+### Pending / Backlog (updated)
+- P1: Self-service "Forgot password" flow (currently only super_admin/admin can reset).
+- P1: Audit log of admin actions (who edited / deleted what).
+- P1: Object-storage migration for `/api/uploads/`.
+- P2: Use refresh tokens (currently single 7-day JWT).
+- P2: Per-user 2FA / TOTP for super_admin accounts.
+- P2: Run Node natively (skip Python proxy) once supervisor.conf becomes editable on the platform.
+

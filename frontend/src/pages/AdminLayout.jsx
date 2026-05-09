@@ -38,7 +38,9 @@ const AdminLayout = () => {
 
   const handleLogout = () => {
     clearAdminToken();
-    navigate('/admin/login');
+    setCurrentUser(null);
+    setUser(null);
+    navigate('/admin/login', { replace: true });
   };
 
   if (!ready) {

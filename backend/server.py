@@ -53,7 +53,7 @@ async def lifespan(_app: FastAPI):
     env = os.environ.copy()
     env["NODE_BACKEND_PORT"] = str(NODE_PORT)
     proc = subprocess.Popen(
-        ["node", "server.js"],
+        ["node", "--watch", "server.js"],
         cwd=str(ROOT),
         env=env,
         stdout=None,
